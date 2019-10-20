@@ -1,0 +1,62 @@
+<div class="spinner" *ngIf="loadingState; else patientlist">
+    <mat-spinner></mat-spinner>
+  </div>
+  <ng-template class="patientlist" #patientlist>
+    <h2 style="text-align: center;">Patient List</h2>
+    <div class="patientlist-container mat-elevation-z8">
+      <div>
+        <button title="Create" mat-raised-button color="accent" (click)="addPatient()">Create</button>
+      </div>
+      <table mat-table #table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  
+          <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+          <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+        </ng-container>
+  
+        <!-- Email Column -->
+        <ng-container matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+        </ng-container>
+  
+        <!-- Gender Column -->
+        <ng-container matColumnDef="middleName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Middle Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.middleName}} </td>
+        </ng-container>
+  
+        <!-- Birth Column -->
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+        </ng-container>
+           <!-- Birth Column -->
+        <ng-container matColumnDef="suffix">
+         <th mat-header-cell *matHeaderCellDef mat-sort-header> Suffix </th>
+          <td mat-cell *matCellDef="let element"> {{element.suffix}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let element">
+            <button title="Edit" mat-raised-button color="primary" (click)="editPatient(element.id)">
+              <mat-icon class="mat-18">edit</mat-icon>
+            </button>
+            <button title="Delete" mat-raised-button color="warn" (click)="deletePatient(element.id)">
+              <mat-icon class="mat-18">delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+  
+    </div>
+  </ng-template>

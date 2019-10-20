@@ -1,0 +1,67 @@
+<form (ngSubmit)="onSubmit(patientFrm)" [formGroup]="patientFrm" class="patient-form">
+  <h2 mat-dialog-title>{{data.modalTitle}}</h2>
+  <mat-dialog-content>
+    <div>
+      <mat-form-field class="control-field">
+        <mat-label>Id</mat-label>
+        <input matInput placeholder="Id" formControlName="id" readonly>
+        <mat-error *ngIf="formErrors.id">
+          {{ formErrors.id }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="control-field">
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="Title" formControlName="title">
+        <mat-error *ngIf="formErrors.title">
+          {{ formErrors.title }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="control-field">
+        <mat-label>First Name</mat-label>
+        <input type="text" matInput placeholder="firstName" formControlName="firstName">
+        <mat-error *ngIf="formErrors.firstName">
+          {{ formErrors.firstName }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="control-field">
+        <mat-label>Middle Name</mat-label>
+        <input type="text" matInput placeholder="middleName" formControlName="middleName">
+        <mat-error *ngIf="formErrors.middleName">
+          {{ formErrors.middleName }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="control-field">
+        <mat-label>Last Name</mat-label>
+        <input type="text" matInput placeholder="lastName" formControlName="lastName">
+        <mat-error *ngIf="formErrors.redirectUri">
+          {{ formErrors.lastName }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="control-field">
+        <mat-label>Suffix</mat-label>
+        <input type="text" matInput placeholder="Suffix" formControlName="suffix">
+        <mat-error *ngIf="formErrors.suffix">
+          {{ formErrors.suffix }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <div>
+
+      <button type="button" mat-raised-button color="warn" (click)="dialogRef.close()">Cancel</button>&nbsp;
+      <button type="submit" mat-raised-button color="primary"
+        [disabled]="patientFrm.invalid">{{data.modalBtnTitle}}</button>
+    </div>
+  </mat-dialog-actions>
+</form>
